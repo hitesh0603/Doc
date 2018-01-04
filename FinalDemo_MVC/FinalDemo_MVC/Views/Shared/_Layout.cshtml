@@ -1,0 +1,70 @@
+﻿@model FinalDemo_MVC.Models.UserDetail
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Documents</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Your Documents", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" style="float:none">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Write to us", "", "")</li>
+                    <li>@Html.ActionLink("Read Article", "", "")</li>
+                    
+                    @*<li style="float:right">@Html.ActionLink("Register", "UserRegistration", "UserAccount")</li>*@
+                    @if (ViewBag.Message == "Fail" || ViewBag.Message == null )
+                    {
+                        <li style="float:right">@Html.ActionLink( "Login", "Userlogin", "UserAccount")</li>
+                        <li style="float:right">@Html.ActionLink("Register", "UserRegistration", "UserAccount")</li>
+                    }
+                    else if (ViewBag.Message == "Success")
+                    {
+                        <li style="float:right">@Html.ActionLink("LogOut", "Index", "Home")</li>
+                    }
+
+                    @*@if (Request.IsAuthenticated)
+                    {
+                        <li style="float:right">@Html.ActionLink("Logout", "userlogout", "UserAccount")</li>
+                        <li style="float:right">@Html.LabelFor(m => m.FirstName)</li>
+                    }
+                    else
+                    {
+                        <li style="float:right">@Html.ActionLink("Register", "UserRegistration", "UserAccount")</li>
+                        <li style="float:right">@Html.ActionLink("Login", "Userlogin", "UserAccount")</li>
+                    }*@
+                    
+                </ul>
+                @*@Html.Partial("_LoginPartial")*@
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        
+        @*<footer>
+            <p>&copy; @DateTime.Now.Year - Documents Upload Application</p>
+        </footer>*@
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

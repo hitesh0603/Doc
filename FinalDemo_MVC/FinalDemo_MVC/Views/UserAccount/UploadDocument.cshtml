@@ -1,0 +1,85 @@
+﻿@model FinalDemo_MVC.Models.userdocument
+@{
+    ViewBag.Title = "UploadDocument";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    List<FinalDemo_MVC.Models.userdocument> li = (List<FinalDemo_MVC.Models.userdocument>)ViewData["userdata"];
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/wwwroot/CSS/HomePage.css" rel="stylesheet" />
+</head>
+
+<body ng-app="myApp">
+    <div class="lbldocument"><span style="color:orange">UPLOAD</span> <span style="color:white">NEW</span> <span style="color:green">DOCUMENTS !!!</span> </div>
+    <div ng-controller="myCtrl">
+        <div>
+            <div>
+                <label class="lblsrcdoc">Serach Your Doc</label>
+                <input type="text" class="txtsearch" ng-model="test" />
+            </div>
+        </div>
+
+
+        <table class="DocumentDetails" id="DocumentTable" border="1">
+            <tr class="TableHeader">
+                <th>No of Document</th>
+                <th ng-click="sort('Documentnames')">Document Name</th>
+                <th ng-click="sort('DocumentNo')">Document No</th>
+                <th ng-click="sort('DocumentDate')">Date of issue</th>
+                <th ng-click="sort('DocumentExpire')">Document Expire Date</th>
+                <th>Edit Document</th>
+                <th>Delete Document</th>
+            </tr>
+            <tr ng-repeat="x in detail | orderBy: myorderby | filter:test ">
+                <td style="background-color:darkgray">{{ $index + 1 }}</td>
+                <td style="background-color:darkgray">{{ x.Documentnames  }}</td>
+                <td style="background-color:darkgray">{{ x.DocumentNo }}</td>
+                <td style="background-color:darkgray">{{ x.DocumentDate | date:"dd/mm/yy"  }}</td>
+                <td style="background-color:darkgray">{{ x.DocumentExpire | date:"dd/mm/yy" }}</td>
+                <td style="background-color:darkgray">@Html.ActionLink("EDIT", "EditDocument", "UserAccount")</td>
+                <td style="background-color:darkgray">@Html.ActionLink("Delete", "DeleteDocument", "UserAccount")</td>
+            </tr>
+            @{
+                foreach (FinalDemo_MVC.Models.userdocument userdata in li)
+                {
+                    <tr>
+                        <td style="background-color:darkgray">@Html.Label(userdata.userdocno.ToString())</td>
+                        <td style="background-color:darkgray"><a href="@Url.Action("ViewImage", "UserAccount", new {userdocno = userdata.userdocno})">@Html.Label(userdata.Documetname)</a></td>
+                        <td style="background-color:darkgray">@Html.Label(userdata.Cardno)</td>
+                        <td style="background-color:darkgray">@Html.Label(userdata.Createdate)</td>
+                        <td style="background-color:darkgray">@Html.Label(userdata.expirydate)</td>
+                        <td style="background-color:darkgray"><a href="@Url.Action("PancardDoc", "UserAccount", new {id = userdata.userdocno })">EDIT</a></td>
+                        <td style="background-color:darkgray"><a href="@Url.Action("DeleteDocument", "UserAccount", new {id = userdata.userdocno })">DELETE</a></td>
+                    </tr>
+                }
+            }
+        </table>
+
+    </div>
+    <div>
+        <img class="PlusImg" src="~/wwwroot/Images/ExpandList.png" />
+        <select id="Document-list" hidden>
+            <option class="AddDoument" value="NewDocument">Upload New Document</option>
+            <option value="PanCard" id="PanCardDetail">Upload Your Pan Card</option>
+            <option value="Passport" id="PassportDetail">Upload Your Passport</option>
+            <option value="DrivingLicence" id="DrivingLicenceDetail">Upload Your Driving Licence</option>
+            <option value="AadharCard" id="AadharCardDetail">Upload Your Aadhar Card</option>
+            <option value="CollegeId" id="CollegeIdDetail">Upload Your College Id</option>
+            <option value="CompanyId" id="CompanyIdDetail">Upload Your CompanyId</option>
+        </select>
+    </div>
+
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/wwwroot/JS/Usercontrol.js"></script>
+    <script src="~/wwwroot/JS/AngularControl.js"></script>
+
+</body>
+</html>
+
+

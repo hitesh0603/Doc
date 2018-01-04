@@ -1,0 +1,69 @@
+﻿@model FinalDemo_MVC.Models.UserDetail
+@{
+    ViewBag.Title = "Userlogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/wwwroot/CSS/HomePage.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/wwwroot/JS/Usercontrol.js"></script>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Userlogin</title>
+</head>
+<body>
+    <form method="post" style="float:left;">
+        <fieldset>
+            @Html.ValidationSummary(true, "Login failed. Check your login details.");
+            <div id="LoginDetail">
+                <table class="Logindetail">
+
+                    <tr id="EmailId">
+                        <td><span class="mailId">Email Or Phone</span></td>
+                        <td>@Html.TextBoxFor(m => m.EmailId, new { PlaceHolder = "Email Address", @id = "txtMailid" })</td>
+                        <td>@*<span><input type="text" id="txtMailid" /></span>*@</td>
+                    </tr>
+
+                    <tr id="Password">
+                        <td> <span class="PasswordLabel">Password</span></td>
+                        <td>@Html.PasswordFor(m => m.Password, new { PlaceHolder = "Password", @id = "txtpass" })</td>
+                        <td> <span>@*<input type="password" id="txtpass" />*@</span></td>
+                    </tr>
+                    <tr class="editor-label">
+                        <td></td>
+                        <td>
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </td>
+                    </tr>
+                    <tr class="controlbtn">
+                        <td></td>
+                        <td><button id="usersignin">Sign in</button></td>
+                    </tr>
+                </table>
+                <label class="SkipLabel">For trial Version</label>
+                <a href="DocumentType.html" id="skip">Skip</a><br />
+                <label id="lblStatus"></label>
+            </div>
+        </fieldset>
+    </form>
+    @if(ViewBag.Message == "Fail")
+    {
+        <script>
+            alert("Please Check user name password");
+            $("#txtMailid").val("");
+            $("#txtpass").val("");
+        </script>
+    }
+
+    <div id="DocumentImage">
+        <span class="ChangeImage">
+            <img class="flicker" src="~/wwwroot/Images/DL.jpg" />
+        </span>
+    </div>
+</body>
+
+</html>

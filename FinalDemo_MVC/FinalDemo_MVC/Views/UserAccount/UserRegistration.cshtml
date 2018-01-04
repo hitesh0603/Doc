@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "UserRegistration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/wwwroot/CSS/HomePage.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/wwwroot/JS/Usercontrol.js"></script>
+
+<html>
+<body>
+    <table class="signupdetail">
+        <tr class="userfirstname">
+            <td><span class="lblfirstname">First Name</span></td>
+            <td><span><input type="text" id="txtfirstname" placeholder="Enter Your first name" required /></span></td>
+        </tr>
+
+        <tr class="userlastname">
+            <td><span class="lbllastname">Last Name</span></td>
+            <td><span><input type="text" id="txtlastname" placeholder="Enter Your last name" required /></span></td>
+        </tr>
+
+        <tr class="usermailid">
+            <td><span class="lblmailid">Email Id</span></td>
+            <td><span><input type="email" id="txtregisterId" placeholder="Enter Your Mail Id" required /></span></td>
+        </tr>
+
+        <tr class="userpassword">
+            <td><span class="lblpassword">Password: </span></td>
+            <td><span><input type="password" id="txtPassword" placeholder="Enter Your Password" required /></span></td>
+        </tr>
+
+        <tr class="usercontact">
+            <td><span class="lblcontact">Mobile no: </span></td>
+            <td><span><input type="text" id="txtmobileno" placeholder="Enter Your Mobile No" required /></span></td>
+        </tr>
+
+        <tr class="controlbtn">
+            <td> <button id="registerDone">Create</button> </td>
+            <td> <button id="registerCancel">Cancel</button><br /></td>
+        </tr>
+    </table>
+</body>
+</html>

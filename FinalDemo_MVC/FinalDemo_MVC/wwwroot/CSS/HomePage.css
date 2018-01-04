@@ -1,0 +1,204 @@
+﻿
+
+body {
+    background-color: aqua;
+    background-image: url('../Images/document.jpg');
+}
+
+
+/*Login page*/
+
+#LoginDetail {
+    float: left;
+}
+
+#DocumentImage {
+    float: right;
+    margin-right: 325px;
+    margin-top: -50px;
+    /*position:fixed;*/
+}
+
+.Logindetail {
+    border-collapse: separate;
+    border-spacing: 0px 11px;
+}
+
+.mailId, .PasswordLabel {
+    color: chocolate;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial Impact, sans-serif;
+}
+
+#usersignin, #usersignup {
+    height: 40px;
+    font-weight: bold;
+    width: 125px;
+    font-style: oblique;
+    font-family: sans-serif;
+    font-size: inherit;
+    color: darksalmon;
+    background-color: inherit;
+    font-variant: small-caps;
+    margin-left: -46px;
+}
+
+.ChangeImage {
+    margin-right: 180px;
+    margin-top: 75px;
+    position: fixed;
+}
+
+
+.SkipLabel {
+    font-size: 34px;
+    color: aqua;
+    margin-left: 53px;
+}
+
+#skip {
+    font-size: 20px;
+    font-family: cursive;
+    margin-left: 12px;
+    color: bisque;
+}
+
+
+
+/* -------------------Sign up start ----------------------- */
+.lblfirstname, .lbllastname, .lblmailid, .lblpassword, .lblcontact {
+    color: chocolate;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial Impact, sans-serif;
+}
+
+.signupdetail {
+    border-collapse: separate;
+    border-spacing: 70px 5px;
+}
+
+td {
+    padding: 10px 50px;
+}
+
+.controlbtn {
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#registerDone, #registerCancel {
+    height: 31px;
+    font-weight: bold;
+    width: 125px;
+    font-style: oblique;
+    font-family: sans-serif;
+    font-size: inherit;
+    color: darksalmon;
+    background-color: inherit;
+    font-variant: small-caps;
+}
+
+
+/*Upload document pagee*/
+
+.lbldocument {
+    font-size: 40px;
+    margin-top: 30px;
+    padding-left: 280px;
+    text-shadow: inherit;
+    margin-bottom: 45px;
+    /*color: white;*/
+}
+
+.lblsrcdoc {
+    color: chocolate;
+    font-size: 25px;
+    float: left;
+    font-weight: bold;
+    font-family: Arial Impact, sans-serif;
+}
+
+.alldoc {
+    color: chocolate;
+    font-size: 25px;
+    float: right;
+    margin-right: 750px;
+    font-weight: bold;
+    font-family: Arial Impact, sans-serif;
+}
+
+.txtsearch {
+    float: right;
+    margin-right: 62%;
+}
+
+.PlusImg {
+    margin-top: 39px;
+    margin-right: -35px;
+    height: 85px;
+    width: 86px;
+    float: right;
+}
+
+#Document-list {
+    margin-right: -53px;
+    width: 360px;
+    height: 33px;
+    float: right;
+    margin-top: 30px;
+}
+
+
+.DocumentDetails {
+    /*margin-top: 100px;*/
+    /*position:relative;*/
+    margin-top: 30px;
+    margin-left: -22%;
+    float: left;
+    /*width: 30px;*/
+}
+
+    .DocumentDetails td {
+        padding: 10px 20px;
+    }
+
+.TableHeader {
+    color: pink;
+}
+
+
+/*Pan card document page*/
+.docname, .docCardno, .docstartdate, .doclastdate {
+    color: chocolate;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial Impact, sans-serif;
+}
+
+.tblpancard {
+    border-collapse: separate;
+    border-spacing: 70px 5px;
+}
+
+#doclist {
+    width: 144px;
+    height: 25px;
+}
+
+#docsubmit, #docCancel {
+    height: 31px;
+    font-weight: bold;
+    width: 125px;
+    font-style: oblique;
+    font-family: sans-serif;
+    font-size: inherit;
+    color: darksalmon;
+    background-color: inherit;
+    font-variant: small-caps;
+}

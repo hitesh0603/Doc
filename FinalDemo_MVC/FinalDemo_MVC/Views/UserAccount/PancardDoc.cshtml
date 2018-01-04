@@ -1,0 +1,53 @@
+﻿@model FinalDemo_MVC.Models.userdocument
+@{
+    FinalDemo_MVC.Models.userdocument fd = new FinalDemo_MVC.Models.userdocument();
+    ViewBag.Title = "PancardDoc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/wwwroot/CSS/HomePage.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/wwwroot/JS/Usercontrol.js"></script>
+
+<form id="data">
+    <table class="tblpancard">
+        @*<tr>
+            <td>@Html.Label("Your Id", new { @class = "docCardno" })</td>
+            <td>@Html.Label(Convert.ToString(Session["userid"]))</td>
+        </tr>*@
+        <tr>
+            <td>@Html.Label("Select Document", new { @class = "docname" })</td>
+            <td>
+                @Html.DropDownListFor(m => m.Documetname,  new SelectList(Enum.GetValues(typeof(FinalDemo_MVC.Models.DocumentsName))), "Select Document", new {id= "doclist", @class = "drpdwndoc" })
+            </td>
+            
+        </tr>
+        <tr>
+            <td>@Html.Label("Enter Your card no", new { @class = "docCardno" })</td>
+            @*<td>@Html.TextBox(fd.Cardno, fd.Cardno.ToString())</td>*@
+            <td>@Html.TextBoxFor(m => m.Cardno, new { type = "number", placeholder = "Enter Your card no", id = "txtdoccardno" })</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Create Date", new { @class = "docstartdate" })</td>
+            <td>@Html.TextBoxFor(m => m.Createdate, new { type = "date", id = "txtstartdate" })</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Expire Date", new { @class = "doclastdate" })</td>
+            <td>@Html.TextBoxFor(m => m.expirydate, new { type = "date", id = "txtlastdate" })</td>
+
+        </tr>
+        <tr>
+            <td>
+                <input type="file" id="ChooseFile" />
+            </td>
+            <td>
+                <img id="myUploadedImg" alt="Photo" style="width:180px;" />
+            </td>
+        </tr>
+        <tr>
+            <td><button id="docsubmit">SUBMIT</button></td>
+            <td><button id="docCancel">CANCEL </button></td>
+        </tr>
+    </table>
+</form>
