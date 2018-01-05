@@ -43,7 +43,8 @@ sp_helptext sp_userAuthentication
 
 -----------------------Document Upload --------------------------------
 
-CREATE PROCEDURE sp_Uploaduserocument
+Alter PROCEDURE sp_Uploaduserocument
+@userid int,
 @Documetname VARCHAR(50),
 @Cardno VARCHAR(20),
 @Createdate VARCHAR(max),
@@ -56,9 +57,9 @@ AS
 
 SET NOCOUNT ON;
 
-INSERT INTO user_documetlist( Documetname, Cardno, Createdate, Expirydate, ImgFileName,imgType,imgContentLength,imgInputStream)
+INSERT INTO user_documetlist(userid, Documetname, Cardno, Createdate, Expirydate, ImgFileName,imgType,imgContentLength,imgInputStream)
 
-VALUES ( @Documetname, @Cardno, @Createdate, @Expirydate, @ImgFileName,@imgType,@imgContentLength,@imgInputStream)
+VALUES ( @userid, @Documetname, @Cardno, @Createdate, @Expirydate, @ImgFileName,@imgType,@imgContentLength,@imgInputStream)
 
 GO
 
@@ -66,21 +67,24 @@ GO
 
 sp_helptext sp_Uploaduserocument 
 
-select * from user_documetlist
------------------------------------------View Documents---------------------
 
-USE PRACTISE
+
+-----------------------------------------View Documents---------------------
 GO
 CREATE PROCEDURE sp_ViewImage
+@userid int,
+@Userdocno int,
+@Documetname varchar(50),
+@imgInputStream VARBINARY(max)
 
 AS
+
 SET NOCOUNT ON;
-select *
-from user_documetlist
- 
+SELECT Userdocno , userid,Documetname,imgInputStream
+FROM user_documetlist
+WHERE userid = @userid AND Userdocno = @Userdocno
 
-
-
+GO
 
 
 ---------------------------------Demo -------------------------------------------------------------
