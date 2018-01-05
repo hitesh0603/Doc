@@ -1,4 +1,4 @@
-﻿using FinalDemo_MVC.Helperservices;
+using FinalDemo_MVC.Helperservices;
 using FinalDemo_MVC.Models;
 using System;
 using System.Collections.Generic;
@@ -22,9 +22,9 @@ namespace FinalDemo_MVC.Services
             var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                if (_Emailid == Convert.ToString(reader.GetSqlValue(3)) && detailEncode.Encodedata(_password) == Convert.ToString(reader.GetSqlValue(4)))
+                if (_Emailid == Convert.ToString(reader["EmailId"]) && detailEncode.Encodedata(_password) == Convert.ToString(reader["Loginpassword"]))
                 {
-                    user.userid = Convert.ToInt32(reader[0]);
+                    user.userid = Convert.ToInt32(reader["userid"]);
                     isValid = true;
                 }
             }
@@ -62,15 +62,15 @@ namespace FinalDemo_MVC.Services
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                if (id == Convert.ToInt32(reader[1]))
+                if (id == Convert.ToInt32(reader["userid"]))
                 {
                     userdocument user = new userdocument();
-                    user.userdocno = Convert.ToInt32(reader[0]);
-                    user.Documetname = Convert.ToString(reader.GetSqlValue(2));
+                    user.userdocno = Convert.ToInt32(reader["Userdocno"]);
+                    user.Documetname = Convert.ToString(reader["Documetname"]);
                     //DocumentsName Documetname = (DocumentsName)Enum.ToObject(typeof(DocumentsName), Convert.ToString(reader.GetSqlValue(2))) ;
-                    user.Cardno = Convert.ToString(reader.GetSqlValue(3));
-                    user.Createdate = Convert.ToString(reader.GetSqlValue(4));
-                    user.expirydate = Convert.ToString(reader.GetSqlValue(5));
+                    user.Cardno = Convert.ToString(reader["Cardno"]);
+                    user.Createdate = Convert.ToString(reader["Createdate"]);
+                    user.expirydate = Convert.ToString(reader["Expirydate"]);
                     userdoc.Add(user);
                 }
             }
