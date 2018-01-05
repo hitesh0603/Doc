@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -43,7 +43,7 @@ namespace FinalDemo_MVC.Models
 
             while (reader.Read())
             {
-                if (_Emailid == Convert.ToString(reader.GetSqlValue(3)) && detailEncode.Encodedata(_password) ==  Convert.ToString(reader.GetSqlValue(4)))
+                if (_Emailid == Convert.ToString(reader["EmailId"]) && detailEncode.Encodedata(_password) ==  Convert.ToString(reader["Loginpassword"]))
                 {
                     userid = Convert.ToInt32(reader[0]);
                     isValid = true;
@@ -69,5 +69,6 @@ namespace FinalDemo_MVC.Models
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
     }
 }
