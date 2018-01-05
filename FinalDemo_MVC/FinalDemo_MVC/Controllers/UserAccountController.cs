@@ -1,4 +1,4 @@
-﻿using FinalDemo_MVC.Models;
+using FinalDemo_MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -85,7 +85,7 @@ namespace FinalDemo_MVC.Controllers
             {
                 if (user.isuservalid(user.EmailId, user.Password))
                 {
-                    //Session["userid"] = user.userid;
+                    Session["userid"] = user.userid;
                     FormsAuthentication.SetAuthCookie(user.EmailId, false);
                     return RedirectToAction("UploadDocument");
                 }
@@ -143,7 +143,7 @@ namespace FinalDemo_MVC.Controllers
             con.Open();
             //if (user.Cardno != null)
             //{
-                //cmd.Parameters.AddWithValue("@userid", Convert.ToString(Session["userid"]));
+                cmd.Parameters.AddWithValue("@userid", Convert.ToString(Session["userid"]));
                 cmd.Parameters.AddWithValue("@Documetname", user.Documetname);
                 cmd.Parameters.AddWithValue("@Cardno", user.Cardno);
                 cmd.Parameters.AddWithValue("@Createdate", user.Createdate);
@@ -173,19 +173,23 @@ namespace FinalDemo_MVC.Controllers
         public ActionResult ViewImage(userdocument user)
         {
             ViewBag.Message = "Success";
-            //  = new userdocument();
+            
             connection();
             con.Open();
 
             SqlCommand cmd = new SqlCommand("select * from user_documetlist", con);
             SqlDataReader reader = cmd.ExecuteReader();
-            
+
+            //SqlCommand cmd = new SqlCommand("sp_ViewImage", con);
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //SqlDataReader reader = cmd.ExecuteReader();
+
             while (reader.Read())
             {
-                if (user.userdocno == Convert.ToInt32(reader[0]))
+                if (Convert.ToInt32(Session["userid"]) == Convert.ToInt32(reader["userid"]))
                 {
 
-                    byte[] binaryString = (byte[])reader[9];
+                    byte[] binaryString = (byte[])reader["imgInputStream"];
                     MemoryStream ms = new MemoryStream();
                     ms.Write(binaryString,0, binaryString.Length);
                     
