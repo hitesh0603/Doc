@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -46,15 +46,16 @@ namespace FinalDemo_MVC.Models
             SqlDataReader reader = cmd.ExecuteReader();
             while(reader.Read())
             {
-                if(id == Convert.ToInt32(reader[1]))
+                if(id == Convert.ToInt32(reader["userid"]))
                 {
                     user = new userdocument();
-                    user.userdocno = Convert.ToInt32(reader[0]);
-                    user.Documetname = Convert.ToString(reader.GetSqlValue(2)) ;
+                    user.userdocno = Convert.ToInt16(reader["Userdocno"]);
+                    user.Documetname = Convert.ToString(reader["Documetname"]);
+                    //user.Documetname = Convert.ToString(reader.GetSqlValue(2)) ;
                     //DocumentsName Documetname = (DocumentsName)Enum.ToObject(typeof(DocumentsName), Convert.ToString(reader.GetSqlValue(2))) ;
-                    user.Cardno = Convert.ToString(reader.GetSqlValue(3));
-                    user.Createdate = Convert.ToString(reader.GetSqlValue(4));
-                    user.expirydate = Convert.ToString(reader.GetSqlValue(5));
+                    user.Cardno = Convert.ToString(reader["Cardno"]);
+                    user.Createdate = Convert.ToString(reader["Createdate"]);
+                    user.expirydate = Convert.ToString(reader["Expirydate"]);
                     userdoc.Add(user);
                 }
             }
