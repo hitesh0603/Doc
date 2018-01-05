@@ -21,6 +21,8 @@ FOREIGN KEY (userid) REFERENCES  signup_document(userid)
 create table user_documetlist
 (
 Userdocno int IDENTITY(1,1) PRIMARY KEY,
+userid int,
+FOREIGN KEY (userid) REFERENCES signup_document(userid),
 Documetname VARCHAR(50),
 Cardno VARCHAR(20),
 Createdate VARCHAR(max),
@@ -31,7 +33,6 @@ imgContentLength VARCHAR(MAX),
 imgInputStream VARBINARY(max)
 );
 
-
 ------------------------------------------------
 
 create table imgupload
@@ -39,5 +40,3 @@ create table imgupload
 ID int Primary Key identity,
 imgfile varbinary(max)
 )
-drop table imgupload
-select * from imgupload
